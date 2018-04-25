@@ -1,12 +1,4 @@
-console.log('its running')
-
 // c:\MAKSYMILIAN\javascript\REACT-Udemy-project1\indecision-app
-
-
-
-
-
-
 
 
 const appRoot = document.getElementById('appRoot');
