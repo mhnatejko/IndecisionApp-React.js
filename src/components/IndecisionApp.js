@@ -108,26 +108,32 @@ class IndecisionApp extends React.Component {
         //const title = 'Indecision'; //usuniete bo w domyslnej jest
         const subtitle = 'Put your life in the hand of a computer';
         
-        return (//z Header usunieto title={title} bo w domyslnej jest
+        return (//z Header usunieto title={title} bo w domyslnej jest //* dodano wewnetrzny div z klasa dla ostylowania //**dodano kolejny wewn div dla Option i AddOption
             <div>
-                <Header  subtitle={subtitle}/> 
-                <Action 
-                hasOption={this.state.options.length > 0}
-                handlePick={this.handlePick}
+            <Header  subtitle={subtitle}/>
+                <div className='container'>
+                    
+                    <Action 
+                    hasOption={this.state.options.length > 0}
+                    handlePick={this.handlePick}                    
+                    />
+                    <div className='widget'>
+                        <Options 
+                        options={this.state.options}
+                        handleDeleteOptions={this.handleDeleteOptions}
+                        handleDeleteOption={this.handleDeleteOption}
+                        />
+                        <AddOption
+                        handleAddOption={this.handleAddOption}
+                        />
+                    </div>
+                    
+                    </div>
+                    <OptionModal 
+                        selectedOption={this.state.selectedOption}
+                        handleClearSelectedOption={this.handleClearSelectedOption}
+                    />
                 
-                />
-                <Options 
-                options={this.state.options}
-                handleDeleteOptions={this.handleDeleteOptions}
-                handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOption
-                handleAddOption={this.handleAddOption}
-                />
-                <OptionModal 
-                    selectedOption={this.state.selectedOption}
-                    handleClearSelectedOption={this.handleClearSelectedOption}
-                />
             </div>
 
         )
