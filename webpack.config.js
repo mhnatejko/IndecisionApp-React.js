@@ -32,15 +32,8 @@ module.exports = (env) => {
                                 sourceMap: true
                             }
                         }
-                        // 'css-loader',
-                        // 'sass-loader'
                     ]
                 }) 
-                // [
-                //     'style-loader',
-                //     'css-loader',
-                //     'sass-loader'
-                // ]
             }]
         },
         plugins: [
@@ -54,8 +47,3 @@ module.exports = (env) => {
         }
         }
 }
-
-// module.exports = {
-    
-// }
-
