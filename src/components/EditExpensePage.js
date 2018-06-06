@@ -3,35 +3,69 @@ import {connect} from 'react-redux';
 import ExpenseForm from './ExpenseForm';
 import {editExpense, removeExpense} from '../actions/expenses';
 
+export class EditExpensePage extends React.Component {
+    
+    onSubmit = (expense) => {
+        this.props.editExpence(this.props.expense.id, expense);
+        this.props.history.push('/')
+    }
 
-const EditExpensePage = (props) => {
-    return (
-        <div>
-            {/*Editing the expense with id of {props.match.params.id}*/}
-            <ExpenseForm 
-                expense = {props.expense}
-                onSubmit={(expense) => {
-                    props.dispatch(editExpense(props.expense.id, expense))
-                    props.history.push('/')
-                }}
-            />
-            <button onClick={() => {
-                props.dispatch(removeExpense({ id: props.expense.id }) )
-                props.history.push('/')
-            }
-                
-            }>
-            remove
-            </button>
-        </div>
-    );
+    onRemove = () => {
+        this.props.removeExpense({ id: this.props.expense.id });
+        this.props.history.push('/')
+    }
+        
+
+
+    render(){
+        return (
+            <div>
+                <ExpenseForm 
+                    expense = {this.props.expense}
+                    onSubmit={this.onSubmit}
+                />
+                <button onClick={this.onRemove}>remove</button>
+            </div>
+        )
+    }
 }
 
+
+//----------------powyzej refactoring na komponent class----------------------------------------------
+// const EditExpensePage = (props) => {
+//     return (
+//         <div>
+//             {/*Editing the expense with id of {props.match.params.id}*/}
+//             <ExpenseForm 
+//                 expense = {props.expense}
+//                 onSubmit={(expense) => {
+//                     props.dispatch(editExpense(props.expense.id, expense))
+//                     props.history.push('/')
+//                 }}
+//             />
+//             <button onClick={() => {
+//                 props.dispatch(removeExpense({ id: props.expense.id }) )
+//                 props.history.push('/')
+//             }
+                
+//             }>
+//             remove
+//             </button>
+//         </div>
+//     );
+// }
+//------------------------------------------------------------------------
+const mapDispatchToProps = (dispatch, props) => {
+    return {
+        editExpense: (id, expense) => dispatch(editExpense(id, expense)),
+        removeExpense: (data) => dispatch(removeExpense(data))
+    }
+}
 const mapStateToProps = (state, props) => {
     return {
         expense:  state.expenses.find((expense) => expense.id === props.match.params.id)
     }
 };
 
-export default connect(mapStateToProps)(EditExpensePage);
+export default connect(mapStateToProps, mapDispatchToProps)(EditExpensePage);
 
