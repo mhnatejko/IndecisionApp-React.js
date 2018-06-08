@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { EditExpensePage } from '../../components/EditExpensePage';
 import expenses from '../fixtures/expenses';
-import { removeAllListeners } from 'cluster';
+// import { removeAllListeners } from 'cluster';
 
 let editExpence, removeExpense, history, wrapper;
 

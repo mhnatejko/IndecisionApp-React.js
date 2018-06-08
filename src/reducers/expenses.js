@@ -1,6 +1,6 @@
 // Expenses Reducer
 
-const expensesReducerDefaultState = []
+const expensesReducerDefaultState = [];
 
 //const expensesReducer = 
 
@@ -10,26 +10,26 @@ export default (state = expensesReducerDefaultState, action) => {
             return [
                 ...state,
                action.expense                
-            ]
+            ];
         case 'REMOVE_EXPENCE':
             // return [
             //    ...state.filter(el=>el.id !== action.expense.id),
             // ]
-            return state.filter(({ id }) => id !== action.id )
+            return state.filter(({ id }) => id !== action.id );
         case 'EDIT_EXPENSE':
             return state.map((expense) => {
                 if (expense.id === action.id) {
                     return {
                         ...expense,
                         ...action.updates
-                    }
+                    };
                 } else {
-                    return expense //jesli nic nie zmieni zwraca nienaruszony
-                }
-            })
+                    return expense; //jesli nic nie zmieni zwraca nienaruszony
+                };
+            });
         default:
             return state
         }
-}
+};
 
 // export default expensesReducer
