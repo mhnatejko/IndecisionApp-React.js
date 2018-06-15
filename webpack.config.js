@@ -55,7 +55,7 @@ module.exports = (env) => {
                 'process.env.FIRABASE_PROJECT_ID': JSON.stringify(process.env.FIRABASE_PROJECT_ID),
                 'process.env.FIRABASE_STORAGE_BUCKET': JSON.stringify(process.env.FIRABASE_STORAGE_BUCKET),
                 'process.env.FIRABASE_MESSAGING_SENDER_ID': JSON.stringify(process.env.FIRABASE_MESSAGING_SENDER_ID)
-            })
+            })  
         ],
         devtool: isProduction ? 'source-map' : 'inline-source-map',
         devServer: {
